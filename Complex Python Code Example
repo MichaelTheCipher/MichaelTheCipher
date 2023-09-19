@@ -1,0 +1,55 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define a function to calculate the Fibonacci sequence
+def fibonacci(n):
+    if n < 0:
+        raise ValueError("n must be a non-negative integer")
+    elif n == 0 or n == 1:
+        return n
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Generate the first 100 Fibonacci numbers
+fibonacci_numbers = np.array([fibonacci(i) for i in range(100)])
+
+# Plot the Fibonacci numbers
+plt.plot(fibonacci_numbers)
+plt.xlabel("Index")
+plt.ylabel("Value")
+plt.title("Fibonacci Sequence")
+plt.show() This code defines a function called fibonacci(), which calculates the Fibonacci sequence. The Fibonacci sequence is a series of numbers where each number is the sum of the two previous numbers. The first two numbers in the sequence are 0 and 1 
+The code then uses the numpy library to generate the first 100 Fibonacci numbers. Finally, the code uses the matplotlib library to plot the Fibonacci numbers. 
+Here is another example of complex Python code:
+import requests
+import json
+
+# Define a function to get the weather forecast for a given city
+def get_weather_forecast(city):
+    api_key = "YOUR_API_KEY"
+    url = "https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}".format(city, api_key)
+
+    response = requests.get(url)
+    data = json.loads(response.content)
+
+    weather_forecast = []
+    for day in data["list"]:
+        weather_forecast.append({
+            "date": day["dt_txt"],
+            "temperature": day["main"]["temp"],
+            "weather": day["weather"][0]["description"]
+        })
+
+    return weather_forecast
+
+# Get the weather forecast for the city of San Francisco
+weather_forecast = get_weather_forecast("San Francisco")
+
+# Print the weather forecast for the next 7 days
+for day in weather_forecast[:7]:
+    print("{}: {}°C, {}".format(day["date"], day["temperature"], day["weather"]))
+This code uses the requests library to make an HTTP request to the OpenWeatherMap API to get the weather forecast for the city of San Francisco. The code then uses the json library to parse the JSON response from the API.
+
+The code then defines a function called get_weather_forecast(), which takes the name of a city as input and returns a list of weather forecasts for the next 7 days.
+
+Finally, the code calls the get_weather_forecast() function to get the weather forecast for the city of San Francisco and prints the results to th
